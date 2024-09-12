@@ -16,6 +16,11 @@ const Formulario = () => {
   } = useForm()
   const [arrayTareas, setArrayTareas]=useState([])
 
+  const borrarTarea = (nombretarea)=> {
+const arrayFiltrado = arrayTareas.filter((elementotarea)=> elementotarea!==nombretarea)
+setArrayTareas(arrayFiltrado)
+  }
+
   const onSubmit = (data) => {
 console.log(data);
 setArrayTareas ([...arrayTareas, data.tarea])
@@ -48,7 +53,7 @@ reset()
       </Button>
         </div>
     </Form>
-    <Lista arrayTareas={arrayTareas}></Lista>
+    <Lista arrayTareas={arrayTareas} borrarTarea={borrarTarea}></Lista>
         </section>
 
     );
