@@ -1,10 +1,13 @@
 import Tarea from "./Tarea";
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const Lista = () => {
     return (
-        <section>
+        <div>
+    <ListGroup as="ul">
         <Tarea></Tarea>
-        </section>
+    </ListGroup>
+        </div>
     );
 };
 

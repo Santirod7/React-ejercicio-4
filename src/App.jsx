@@ -11,6 +11,7 @@ function App() {
     <img className='' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQzC6pi-QUjeZ_z4ukUXrtLc06zuUH1V400A&s' alt="Logo" />
     </div>
     <h1 className='text-center mt-3'><b>Cat list</b></h1>
+    <h3 className='text-center mt-2'>Experto en administrar tareas</h3>
     <Formulario></Formulario>
    </main>
   )
