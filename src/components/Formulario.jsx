@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Lista from './Lista'
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
@@ -14,7 +14,12 @@ const Formulario = () => {
     formState: { errors },
     reset
   } = useForm()
-  const [arrayTareas, setArrayTareas]=useState([])
+  const leerLocal = JSON.parse(localStorage.getItem('listadeTareaskey')|| [])
+  const [arrayTareas, setArrayTareas]=useState(leerLocal)
+
+  useEffect(()=>{
+localStorage.setItem('listadeTareaskey', JSON.stringify(arrayTareas))
+  }, [arrayTareas])
 
   const borrarTarea = (nombretarea)=> {
 const arrayFiltrado = arrayTareas.filter((elementotarea)=> elementotarea!==nombretarea)
