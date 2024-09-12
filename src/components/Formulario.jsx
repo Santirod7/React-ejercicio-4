@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Lista from './Lista'
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+
 
 
 const Formulario = () => {
@@ -10,10 +12,14 @@ const Formulario = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm()
+  const [arrayTareas, setArrayTareas]=useState([])
 
   const onSubmit = (data) => {
-console.log(data)
+console.log(data);
+setArrayTareas ([...arrayTareas, data.tarea])
+reset()
   }
     
     return (
@@ -26,11 +32,11 @@ console.log(data)
         </Form.Text>
         <Form.Control type="text" {...register('tarea',{
         required: "Campo obligatorio",
-        minLenght: {
+        minLength: {
           value:3,
           message: "La tarea debe tener minimo 2 carácteres"
         },
-        maxLenght: {
+        maxLength: {
           value:50,
           message: "La tarea debe tener máximo 50 carácteres"
         }
@@ -42,7 +48,7 @@ console.log(data)
       </Button>
         </div>
     </Form>
-    <Lista></Lista>
+    <Lista arrayTareas={arrayTareas}></Lista>
         </section>
 
     );
